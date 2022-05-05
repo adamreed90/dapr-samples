@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32414.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "Console\Console.csproj", "{DB5AE002-0D45-4D5A-8C76-81813B2EE11D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAgRPC", "ServiceAgRPC\ServiceAgRPC.csproj", "{A9BA2EE2-E614-4C70-88AF-261351935A30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceAgRPC", "ServiceAgRPC\ServiceAgRPC.csproj", "{A9BA2EE2-E614-4C70-88AF-261351935A30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIAhttp", "WebAPIAhttp\WebAPIAhttp.csproj", "{A1CC4072-29FF-40E6-8E7B-B23E53FFA7E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A9BA2EE2-E614-4C70-88AF-261351935A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9BA2EE2-E614-4C70-88AF-261351935A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9BA2EE2-E614-4C70-88AF-261351935A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1CC4072-29FF-40E6-8E7B-B23E53FFA7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CC4072-29FF-40E6-8E7B-B23E53FFA7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CC4072-29FF-40E6-8E7B-B23E53FFA7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CC4072-29FF-40E6-8E7B-B23E53FFA7E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
