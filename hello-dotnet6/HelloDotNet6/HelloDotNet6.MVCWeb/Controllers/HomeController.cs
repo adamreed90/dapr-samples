@@ -18,13 +18,13 @@ namespace HelloDotNet6.MVCWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //We will communicate with the gRPC API via a Dapr Sidecar, so our target will be the Dapr Sidecard running by default at port 50001.
-            using var channel = GrpcChannel.ForAddress("https://localhost:50001");
+            //We will communicate with the gRPC API via a Dapr Sidecar, so our target will be the Dapr Sidecard which we have configured to listen at port 50001
+            using var channel = GrpcChannel.ForAddress("http://localhost:50001");
 
             //For the Dapr Sidecar to locate our gRPC API, we neet to let it know the services app-id and provide it in the metadata of the request.
             var metadata = new Metadata
             {
-                { "dapr-app-id", "HelloDotNet6.GrpcApi" }
+                { "dapr-app-id", "HelloDotNet6GrpcApi" }
             };
 
             var client = new Greeter.GreeterClient(channel);
