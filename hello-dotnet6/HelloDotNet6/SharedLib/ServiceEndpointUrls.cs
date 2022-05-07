@@ -4,7 +4,8 @@
 
     // Testing 1,2,3
     public class ServiceEndpointUrls
-    {
-        public const string WebAPIAhttpUrl = "http://localhost:5129";
+    {        
+        public const string WebAPIAhttpBaseUrl = "http://localhost:5129";
+        public const string WeatherForecast = "/WeatherForecast";
     }
 }
