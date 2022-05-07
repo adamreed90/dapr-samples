@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDotNet6.GrpcApi", "Hel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDotNet6.Data", "HelloDotNet6.Data\HelloDotNet6.Data.csproj", "{6D75FD5C-70C5-4675-B703-B62235E27BE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDotNet6.MVCWeb", "HelloDotNet6.MVCWeb\HelloDotNet6.MVCWeb.csproj", "{74304BBD-67B2-4EA2-B4E4-5525B48AD4D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6D75FD5C-70C5-4675-B703-B62235E27BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D75FD5C-70C5-4675-B703-B62235E27BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D75FD5C-70C5-4675-B703-B62235E27BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74304BBD-67B2-4EA2-B4E4-5525B48AD4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74304BBD-67B2-4EA2-B4E4-5525B48AD4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74304BBD-67B2-4EA2-B4E4-5525B48AD4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74304BBD-67B2-4EA2-B4E4-5525B48AD4D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
