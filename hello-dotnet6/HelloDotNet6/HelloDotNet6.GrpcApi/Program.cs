@@ -1,4 +1,6 @@
+using HelloDotNet6.Data.Models;
 using HelloDotNet6.GrpcApi.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+
+// Add MariaDb Context
+builder.Services.AddDbContext<ShoppingDatabaseContext>(o => o
+    .UseMySql("server=localhost;port=3306;userid=root;password=my-secret-pw;database=DaprShopping;", new MariaDbServerVersion(new Version(10,7,3)))
+    // The following three options help with debugging, but should
+    // be changed or removed for production.
+    .LogTo(Console.WriteLine, LogLevel.Information)
+    .EnableSensitiveDataLogging()
+    .EnableDetailedErrors());
+
 
 var app = builder.Build();
 
