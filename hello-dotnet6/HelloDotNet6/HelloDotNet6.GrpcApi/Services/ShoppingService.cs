@@ -21,24 +21,17 @@ namespace HelloDotNet6.GrpcApi.Services
         public override async Task<GetInventoryResponse> GetInventory(GetInventoryRequest request, ServerCallContext context)
         {
             using var client = new DaprClientBuilder().Build();
-            var inventory = await client.GetStateAsync<Inventory>("statestore", "inventory_" + request.ProductId);
-            if (inventory == null)
-            {
-                inventory = await _shoppingDatabaseContext.Inventory.Include(i => i.Product)
-                    .SingleOrDefaultAsync(s => s.Product.ProductId == request.ProductId);
-                if (inventory != null)
-                    await client.SaveStateAsync("statestore", "inventory_" + inventory.Product.ProductId, inventory);
-            }
 
-            if (inventory != null)
-            {
-                return new GetInventoryResponse
-                    {ProductId = inventory.Product.ProductId, StockQuantity = inventory.Quantity};
-            }
-            else
-            {
-                return new GetInventoryResponse();
-            }
+            var inventory = await client.GetStateAsync<Inventory>("statestore", "inventory_" + request.ProductId) ??
+                            await _shoppingDatabaseContext.Inventory.Include(i => i.Product)
+                                .SingleOrDefaultAsync(s => s.Product.ProductId == request.ProductId);
+
+            if (inventory == null) return new GetInventoryResponse();
+
+            await client.SaveStateAsync("statestore", "inventory_" + inventory.Product.ProductId, inventory);
+
+            return new GetInventoryResponse
+                {ProductId = inventory.Product.ProductId, StockQuantity = inventory.Quantity};
 
         }
     }
