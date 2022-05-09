@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HelloDotNet6.Data\HelloDotNet6.Data.csproj" />
     <Protobuf Include="..\HelloDotNet6.Data\Protos\greet.proto" GrpcServices="Client" Link="Protos\greet.proto" />
+    <Protobuf Include="..\HelloDotNet6.Data\Protos\shopping.proto" GrpcServices="Client" Link="Protos\shopping.proto" />
   </ItemGroup>
 
 </Project>

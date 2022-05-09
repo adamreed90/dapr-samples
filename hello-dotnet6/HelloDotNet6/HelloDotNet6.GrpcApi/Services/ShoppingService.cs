@@ -31,7 +31,7 @@ namespace HelloDotNet6.GrpcApi.Services
             await client.SaveStateAsync("statestore", "inventory_" + inventory.Product.ProductId, inventory);
 
             return new GetInventoryResponse
-                {ProductId = inventory.Product.ProductId, StockQuantity = inventory.Quantity};
+                {ProductId = inventory.Product.ProductId, ProductName = inventory.Product.Name, StockQuantity = inventory.Quantity};
 
         }
     }

@@ -45,6 +45,35 @@ namespace HelloDotNet6.MVCWeb.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Inventory()
+        {
+            using var channel = GrpcChannel.ForAddress("http://localhost:50001");
+
+            //For the Dapr Sidecar to locate our gRPC API, we neet to let it know the services app-id and provide it in the metadata of the request.
+            var metadata = new Metadata
+            {
+                { "dapr-app-id", "HelloDotNet6GrpcApi" }
+            };
+
+            var client = new Shopping.ShoppingClient(channel);
+
+            var requestTimer = Stopwatch.StartNew();
+
+            var reply = await client.GetInventoryAsync(
+                new GetInventoryRequest
+                {
+                    ProductId = 1
+                }, metadata);
+
+            requestTimer.Stop();
+
+            ViewData["gRPCResponse"] = reply;
+            ViewData["gRPCResponseTime"] = requestTimer.ElapsedMilliseconds;
+
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

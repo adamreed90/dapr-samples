@@ -1,0 +1,11 @@
+﻿@using HelloDotNet6.Data
+@{
+    ViewData["Title"] = "Home Page";
+    var inventoryItem = (GetInventoryResponse) ViewData["grpcResponse"]!;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Inventory</h1>
+    <p>Product Name: @inventoryItem.ProductName - Qty: @inventoryItem.StockQuantity</p>
+    <p>took @ViewData["gRPCResponseTime"]ms</p>
+</div>

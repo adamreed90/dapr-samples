@@ -17,7 +17,8 @@ message GetInventoryRequest {
 
 message GetInventoryResponse {
 	int64 ProductId = 1;
-	int32 StockQuantity = 2;
+	string ProductName = 2;
+	int32 StockQuantity = 3;
 }
 
 // The request message containing the user's name.
