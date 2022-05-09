@@ -22,13 +22,21 @@ namespace HelloDotNet6.GrpcApi.Services
         {
             using var client = new DaprClientBuilder().Build();
 
-            var inventory = await client.GetStateAsync<Inventory>("statestore", "inventory_" + request.ProductId) ??
-                            await _shoppingDatabaseContext.Inventory.Include(i => i.Product)
-                                .SingleOrDefaultAsync(s => s.Product.ProductId == request.ProductId);
+            var inventory = await client.GetStateAsync<Inventory>("statestore", "inventory_" + request.ProductId);
 
-            if (inventory == null) return new GetInventoryResponse();
+            if (inventory == null)
+            {
+                inventory = await _shoppingDatabaseContext.Inventory.Include(i => i.Product)
+                    .SingleOrDefaultAsync(s => s.Product.ProductId == request.ProductId);
 
-            await client.SaveStateAsync("statestore", "inventory_" + inventory.Product.ProductId, inventory);
+                var metadata = new Dictionary<string, string>
+                {
+                    {"ttlInSeconds", "60"}
+                };
+
+                await client.SaveStateAsync("statestore", "inventory_" + inventory.Product.ProductId, inventory, null,
+                    metadata);
+            }
 
             return new GetInventoryResponse
                 {ProductId = inventory.Product.ProductId, ProductName = inventory.Product.Name, StockQuantity = inventory.Quantity};
